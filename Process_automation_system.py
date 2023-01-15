@@ -9,7 +9,9 @@ import time;
 import pandas as pd;
 
 pag.PAUSE = 1;
-pag.press
+# pag.press
+
+
 """
 pag.hotkey("alt","TAB");
 pag.hotkey("ctrl","t");
@@ -36,19 +38,42 @@ tabela = pd.read_excel(r"C:\Users\Patrick\Downloads\Vendas - Dez.xlsx")
 faturamento = tabela["Valor Final"].sum();
 quantidade = tabela["Quantidade"].sum();
 
-print("Soma do faturamento: ",faturamento);
-print("Soma da quantitade: ",quantidade);
 
+# ABRINDO O EMAIL
 pag.hotkey("alt","TAB");
 pag.hotkey("ctrl","t");
 pag.write("https://mail.google.com/mail/u/0/#inbox");
 pag.press("enter");
-
-time.sleep(5);
-pag.click(x=98, y=200, clicks=1);
+time.sleep(7);
+pag.click(x=98, y=190, clicks=1); # Clicando em "Escrever"
 time.sleep(1);
-pag.write("marcospatrick039474@gmail.com");
+
+
+### DEFININDO DESTINATÁRIO
+pyperclip.copy("marcospatrick039474@gmail.com");
+pag.hotkey("ctrl","v");
+time.sleep(1);
 pag.press("tab");
+
+#### ASSUNTO:
+pyperclip.copy("Relatório de vendas");
+pag.hotkey("ctrl","v");
+pag.press("tab");
+
+### CORPO
+msg = f'''
+    Prezados, bom dia
+    O faturamento de ontem foi de: R$ {faturamento:,.2f}
+    A quantidade de produtos foi de: {quantidade:,}
+
+    Abs
+    Patrick, Marcos, 2023
+'''
+
+pyperclip.copy(msg);
+pag.hotkey("ctrl","v");
+pag.click(771, 692); # Sending email
+
 
 
 
@@ -60,7 +85,6 @@ print(pyautogui.position());
 
 
 # CALCULAR OS INDICADORES (FATURAMENTO E QUANTIDADE DE PRODUTOS)
-
 
 
 
