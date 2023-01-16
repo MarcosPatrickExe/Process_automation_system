@@ -12,7 +12,7 @@ pag.PAUSE = 1;
 # pag.press
 
 
-"""
+
 pag.hotkey("alt","TAB");
 pag.hotkey("ctrl","t");
 pyperclip.copy("https://drive.google.com/drive/folders/149xknr9JvrlEnhNWO49zPcw0PW5icxga")
@@ -30,7 +30,7 @@ pag.click(x=1116, y=191, clicks=1); # CLICANDO NO "3 pontinhos"
 
 time.sleep(1);
 pag.click(x=917, y=587, clicks=1); # CLICANDO EM DOWNLOAD
-"""
+
 
 
 tabela = pd.read_excel(r"C:\Users\Patrick\Downloads\Vendas - Dez.xlsx")
@@ -73,41 +73,3 @@ msg = f'''
 pyperclip.copy(msg);
 pag.hotkey("ctrl","v");
 pag.click(771, 692); # Sending email
-
-
-
-
-
-"""
-# print("Terminado.....");
-# time.sleep(5);
-print(pyautogui.position());
-
-
-# CALCULAR OS INDICADORES (FATURAMENTO E QUANTIDADE DE PRODUTOS)
-
-
-
-response = requests.get("https://pokeapi.co/api/v2/pokemon/pikachu");
-
-class Pokemon:
-    def __init__(self, dict):
-        self.__dict__.update(dict);
-
-
-def dict2object(response):
-    return json.loads(response.text, object_hook=Pokemon);
-
-
-#for count in response:
-#print(response.json() );
-obj2 = dict2object(response);
-print("obj2: ",obj2);
-print(obj2.ability.name , "\n");
-
-
-
-obj = json.loads(response.text);
-print("Tipo do obj capturado: ", type(obj) );
-print(obj['abilities']);
-"""
